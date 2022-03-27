@@ -1,0 +1,154 @@
+
+body {
+  font: 14px Lato, "Montserrat", sans-serif;
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.appHeading {
+  color: #8cc751 !important;
+  text-align: center;
+  font-family: "Great Vibes";
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px #fff;
+  font-size: 40px;
+}
+
+.btn-light:not(:disabled):not(.disabled).active {
+  background-color: #D0F0C0;
+}
+
+.navbar-text {
+  font-size: xx-large;
+}
+
+.navbar-toggler {
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
+.navbar-dark .navbar-text {
+  color: #f8f9fa;
+}
+
+.navbar {
+padding: 0rem !important;
+}
+
+.headingColor {
+background-color: #D0F0C0;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-class {
+  background-color: gainsboro;
+}
+
+#sticky-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.emphasize-dark {
+  box-shadow: 0 0 5px 2px rgba(0,0,0,.35);
+}
+
+.homeInnerText {
+  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+  color: red;
+  opacity: 0.6;
+  font: 55px 'Raleway';
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+
+    padding-top: 0.25rem !important;
+    padding-right: 1.25rem !important;
+    padding-bottom: 0.25rem !important;
+    padding-left: 1.25rem !important;
+}
+
+.card-header {
+       padding-top: 0.25rem !important;
+       padding-right: 1.25rem !important;
+       padding-bottom: 0.25rem !important;
+       padding-left: 1.25rem !important;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: 0.50rem !important;
+    font-size: 1rem !important;
+     line-height: 1.0 !important;
+    }
+
+.col-form-label {
+  font-size: 16px; !important;
+  font-weight: normal;
+}
+
+.bg-custom {
+  background-color: #98FB98;
+}
+
+.horizontalLine {
+border: 2px solid #D0F0C0;
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+}
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  top: -14px !important;
+  left: -14px !important;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+
+#itemCount {
+    font-size: 16px;
+    background: #18bad4;
+    color: #fff;
+    padding: 1px 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+
+label {
+     opacity: 0.6 !important;
+     font: 16px 'Raleway' !important;
+     font-weight: bolder !important;
+}
+
+.hide {
+	display: none;
+}
+
+.view-options {
+  margin-left: auto;
+}
+
+.scrollable{
+  overflow-y: auto;
+  max-height: 480px;
+}

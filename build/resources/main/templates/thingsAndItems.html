@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>IoT Hub</title>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light border">
+        <a class="navbar-brand" href="/"></a>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="navbar-text col text-left appHeading">IoT Hub</span>
+
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/createThingsAndItems">Create Things/Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto active"
+               href="/thingsAndItems">Things and Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/virtualSpace">Virtual Space</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/applications">Synchronous Query</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/asynchronousQuery">Asynchronous query</a>
+        </div>
+    </nav>
+</header>
+<div id="things">
+    <div class="container py-2">
+        <div class="container emphasize-dark">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-12" style="float:left">
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <p style="color: #00308F; font: 24px 'Raleway';opacity: 0.6;font-weight: bolder; ">Available Things</p>
+                                <br>
+                                <div class="scrollable">
+                                    <div th:each="thing: ${things}">
+                                        <div class="card card-body emphasize-dark mt-2">
+                                            <div class="card-columns">
+                                            </div>
+                                            <div class="col-form-label">
+                                                <hr class="bg-custom horizontalLine">
+                                                <div>
+                                                    <p data-th-utext="${#strings.replace(#strings.escapeXml(thing),'&#10;','&lt;br&gt;')}" ></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-md-12" style="float:left">
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <p style="color: #00308F; font: 24px 'Raleway';opacity: 0.6;font-weight: bolder; ">Available Data Items</p>
+                                <div class="scrollable">
+                                    <div th:each="dataItem: ${dataItems}">
+                                        <div class="card card-body emphasize-dark mt-2">
+                                            <div class="card-columns">
+                                            </div>
+                                            <div class="col-form-label">
+                                                <hr class="bg-custom horizontalLine">
+                                                <div>
+                                                    <p data-th-utext="${#strings.replace(#strings.escapeXml(dataItem),'&#10;','&lt;br&gt;')}"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{jax/libs/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script>
+			function ajaxPost() {
+				var formData = $("#thing").val();
+				$.ajax({
+					type : "GET",
+					contentType : "application/json",
+					url : "http://localhost:8080/thingsAndItems",
+					data : JSON.stringify(formData),
+					dataType : 'json',
+					success : function(result) {
+						if (result.status == "success") {
+							$("#postResultDiv").html(
+									"" + result.data.name
+											+ "Post Successfully! <br>"
+											+ "---> Congrats !!" + "</p>");
+						} else {
+							$("#postResultDiv").html("<strong>Error</strong>");
+						}
+						console.log(result);
+					},
+					error : function(e) {
+						alert("Error!")
+						console.log("ERROR: ", e);
+					}
+				});
+			}
+		})
+
+</script>
+</body>
+
+</html>

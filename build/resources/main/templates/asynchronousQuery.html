@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Asynchronous Query</title>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light border">
+        <a class="navbar-brand" href="/"></a>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="navbar-text col text-left appHeading">IoT Hub</span>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/createThingsAndItems">Create Things/Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/thingsAndItems">Things and Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/virtualSpace">Virtual Space</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/applications">Synchronous Query</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto active"
+               href="/asynchronousQuery">Asynchronous Query</a>
+        </div>
+    </nav>
+</header>
+
+<div id="asynchronousQuery">
+    <div class="container py-2">
+        <div class="container emphasize-dark">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-12" style="float:left">
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <p style="color: #00308F; font: 24px 'Raleway';opacity: 0.6;font-weight: bolder; ">Asynchronous queries</p>
+                                <form class="col card p-3 my-5" method="post" th:action="@{/}" th:object="${alarm}">
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="scope">Scope</label>
+                                        <input class="form-control" id="scope" type="text" name="scope" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="conditions">Condition</label>
+                                        <input class="form-control" id="conditions" type="text" name="conditions" required/>
+                                    </div>
+                                    <div>
+                                        <input class="btn btn-primary" type="submit" value="Create">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${userMessage}" th:utext="${userMessage}" class="alert alert-success text-center"></div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

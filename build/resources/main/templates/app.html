@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>IoT Hub</title>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light border">
+        <a class="navbar-brand" href="/"></a>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="navbar-text col text-left appHeading">IoT Hub</span>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto active"
+               href="/createThingsAndItems">Create Things/Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/thingsAndItems">Things and Items</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/virtualSpace">Virtual Space</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/applications">Synchronous Query</a>
+            <a class="mr-2 mt-2 mb-1 nav-item nav-link btn btn-light col-auto"
+               href="/asynchronousQuery">Asynchronous query</a>
+        </div>
+    </nav>
+</header>
+
+<div id="createThingsAndItems">
+    <div class="container py-2">
+        <div class="container emphasize-dark">
+            <div id="flashMsg"  th:if="${flashMessage}" th:utext="${flashMessage}" class="alert alert-success text-center" style="float:center"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-12" style="float:left">
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <p style="color: #00308F; font: 24px 'Raleway';opacity: 0.6;font-weight: bolder; ">Create Thing</p>
+                                <br>
+                                <form method="post" , th:action="@{/create/newThing}" th:object="${thing}" class="form" role="form" id='formId'>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="name">Name</label>
+                                        <input class="form-control" id="name" type="text" name="name" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="IPAddress">IP Address</label>
+                                        <input class="form-control" id="IPAddress" type="text" name="IPAddress" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="active">Active</label>
+                                        <input class="form-control" id="active" type="text" name="active"/>
+                                    </div>
+                                    <div>
+                                        <button id='submitButton' type="submit" class="btn btn-primary btn-lg float-right">Create</button>
+                                    </div>
+                                </form>
+                                <br><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12" style="float:left">
+                        <div class="card mt-1">
+                            <div class="card-body">
+                                <p style="color: #00308F; font: 24px 'Raleway';opacity: 0.6;font-weight: bolder; ">Create Data Item</p>
+                                <br>
+                                <form method="post" , th:action="@{/create/newDataItem}" th:object="${dataItem}" class="form" role="form">
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="name">Name</label>
+                                        <input class="form-control" id="dataItemName" type="text" name="name" required/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="creator">Creator</label>
+                                        <input class="form-control" id="creator" type="text" name="creator" required/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-form-label" for="access">Access</label>
+                                        <input class="form-control" id="access" type="text" name="access" required/>
+                                    </div>
+
+                                    <div>
+                                        <button type="submit" class="btn btn-primary btn-lg float-right">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
